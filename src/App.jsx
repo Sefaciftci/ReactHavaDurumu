@@ -1,40 +1,17 @@
-//axios get ile apideye istek atıcaz daha sonra gelen veriyi state te tutucaz daha sonra olusturduğumuz componenete statemizi props olarak yollıyıcaz
-//gelen verileri componentte ekrana vericez
-import axios from 'axios'
-import { useState } from 'react'
-
+import React, { useState } from "react"
+import Form from "./Form"
+import Info from "./Info"
 function App() {
+   //statemizi app.jsx de oluşturduk ve formdaki cektigimiz veirleri alıp ınfoya aktardık
 
-  const [weater,setWeater] = useState();
-  const [city, setCity] = useState();
-
-  
-  const getWeaterData = async(city) => {
-    const key = procces.env.REACT_API_WEATER_KEY; 
-    try{
-      const {data} = axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`);
-      setWeater(data);
-    }catch{
-      alert("Beklenmedik bir hata oluştu.")
-    }
-  }
-  console.log(weater);
+   const [infoData, setInfoData] = useState([]); 
+   const [control, setControl] = useState(false);
   return (
-    <>
-      <div className='container'>
-        <h1>Hava durumu</h1>
-        <input
-        type='text'
-        placeholder='City name'
-        value={city}
-        onChange={(e)=> setCity(e.target.value)}
-        />
-        <button onClick={getWeaterData}>Click</button>
-       
-      </div>
-
-    </>
+   <div>
+     <Form setInfoData= {setInfoData} setControl= {setControl}/>
+     <Info infoData={infoData} control = {control}/>
+   </div>
   )
 }
 
-export default App
+export default App;
