@@ -1,19 +1,20 @@
 import React from 'react'
+import './Info.css';
 //destruction yöntemi
 function Info({infoData, control}) {
   return (
-
-   <div>
+    //control : veri cekilip cekilmediğini kontrol eder 
+   <div className='info-box'>
      {control ? 
      <div>
-      <p> Sehir adi: {infoData.name}</p>
+      <p> Şehir : {infoData.name}</p>
         <div>
-           <p>Sicaklik : {infoData.main.temp}</p>
-           <p> description: {infoData.weather[0].description}</p>
+           <p>Sıcaklık  : {infoData.main.temp}</p>
+           <p> Hava Durumu: {infoData.weather[0].description}</p>
         </div>
     
         <div>
-            <p>Hissedilen sicaklik {infoData.main.feels_like} </p>
+            <p>Hissedilen Sıcaklık:  {infoData.main.feels_like} </p>
         </div>
     </div>
       :  
